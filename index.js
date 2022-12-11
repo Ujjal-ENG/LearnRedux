@@ -3,6 +3,8 @@
 //reducer
 //store
 
+const { createStore } = require("redux");
+
 //CONSTRAINTS
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
@@ -56,3 +58,19 @@ const counterReducer = (state = initialState, action) => {
       state
   }
 };
+
+
+//store
+
+const store = createStore(counterReducer)
+
+store.subscribe(() => {
+  console.log(store.getState())
+})
+
+store.dispatch(incrementCounterAction())
+store.dispatch(incrementCounterAction())
+store.dispatch(incrementCounterAction())
+store.dispatch(decrementCounterAction())
+store.dispatch(decrementCounterAction())
+store.dispatch(resetCounterAction())
