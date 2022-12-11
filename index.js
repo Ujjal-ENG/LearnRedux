@@ -1,16 +1,15 @@
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
+const { default: logger } = require("redux-logger");
 
 //Product Constraints
 const GET_PRODUCTS = "GET_PRODUCTS";
 const ADD_PRODUCTS = "ADD_PRODUCTS";
-
 
 // productStates
 const initialProductState = {
   products: ["sugar", "salt"],
   numberofProducts: 2,
 };
-
 
 //action of Product State
 const getProducts = () => {
@@ -25,7 +24,6 @@ const addProducts = (product) => {
     payload: product,
   };
 };
-
 
 //Product Reducer of Action Performed
 const productReducer = (state = initialProductState, action) => {
@@ -45,17 +43,12 @@ const productReducer = (state = initialProductState, action) => {
   }
 };
 
-
-
-const store = createStore(productReducer);
+const store = createStore(productReducer, applyMiddleware(logger));
 store.subscribe(() => {
   console.log(store.getState());
 });
 
-
-
 store.dispatch(getProducts());
 store.dispatch(addProducts("orange"));
-
 
 //cardReducer
