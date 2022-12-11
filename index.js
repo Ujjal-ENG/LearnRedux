@@ -1,52 +1,25 @@
-const { createStore } = require("redux");
+//State - count=0
+//action - increment,decrement,reset
+//reducer
+//store
 
-//State
-const initialCounterState = {
-  count: 0
+//CONSTRAINTS
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+const RESET = "RESET";
+
+const initialState = {
+  count: 0,
 };
 
-//Action -Object -Type or Payload
-const incrementCounter = () => {
+const incrementCounterAction = () => {
   return {
-    type: "INCREMENT",
+    type: INCREMENT,
   };
 };
 
-const decrementCounter = () => {
+const decrementCounterAction = () => {
   return {
-    type: "DECREMENT",
+    type: DECREMENT,
   };
 };
-
-//Create the reducer for counter
-const counterReducer = (state = initialCounterState, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return {
-        ...state,
-        count: state.count + 2,
-      };
-    case "DECREMENT":
-      return {
-        ...state,
-        count: state.count - 1,
-      };
-
-    default:
-      state;
-  }
-};
-
-//create store
-const store = createStore(counterReducer);
-
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
-// dispatch Action
-store.dispatch(incrementCounter());
-store.dispatch(incrementCounter());
-store.dispatch(incrementCounter());
-
-
