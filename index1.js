@@ -3,8 +3,8 @@
 //middleware - redux-thunk
 // axios api
 
-const { default: axios } = require("axios");
 const { createStore, applyMiddleware } = require("redux");
+const { default: axios } = require("axios");
 const { default: thunk } = require("redux-thunk");
 
 //constants
@@ -77,7 +77,9 @@ const fetchData = () => {
     axios
       .get(API_URL)
       .then((res) => {
-        console.log(res.data);
+        const todos = res.data;
+        const titles = todos.map((todo) => todo.title);
+        dispatch(getTodoSuccess(titles));
       })
       .catch((error) => {
         console.log(error.message);
