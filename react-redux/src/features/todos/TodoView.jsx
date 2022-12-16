@@ -17,10 +17,10 @@ const TodoView = () => {
       {isLoading && <h3>Loading...</h3>}
       {error && <h3>{error.message}...</h3>}
       {todos &&
-        todos.map((todo) => {
+        todos.map((todo,id) => {
           return (
             <>
-              <article key={Math.random()}>
+              <article  key={id}>
                 <h3>{todo.title}</h3>
                 <p>{todo.posts}</p>
               </article>
