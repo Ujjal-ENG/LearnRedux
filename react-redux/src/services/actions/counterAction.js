@@ -1,21 +1,20 @@
 import { DECREMENT, INCREMENT, RESET } from "../constants/counterConstants";
 
-const counterIncrement = () => {
+export const counterIncrement = () => {
   return {
     type: INCREMENT,
   };
 };
 
-const counterDecrement = () => {
+export const counterDecrement = () => {
   return {
     type: DECREMENT,
   };
 };
 
-const counterReset = () => {
+export const counterReset = () => {
   return {
     type: RESET,
   };
 };
 
-export { counterDecrement, counterIncrement, counterReset };

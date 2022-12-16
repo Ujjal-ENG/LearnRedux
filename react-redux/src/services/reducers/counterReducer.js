@@ -1,4 +1,4 @@
-import { DECREMENT, INCREMENT, RESET } from "../constants/counterConstants";
+import { DECREMENT, INCREMENT, RESET } from "../constants/counterConstants.js";
 
 const initialCounter = { count: 0 };
 
@@ -18,7 +18,7 @@ const counterReducer = (state = initialCounter, action) => {
 
     case RESET:
       return {
-        count: "",
+        count: 0,
       };
 
     default:
